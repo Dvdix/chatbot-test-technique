@@ -1,6 +1,6 @@
-name,description
-stock,Obtenir le stock d'un item x à un lieu y
-lost,Obtenir le nombre de pertes d'un item x à un lieu y
-report,Obtenir un rapport sur un item x à un lieu y
-item_details,Obtenir la description de l'item x
-loc_details,Obtenir la description de la location y 
+name,description,requiresLocations,requiresItems
+stock,Obtenir le stock d'un item x à un lieu y,1,1
+lost,Obtenir le nombre de pertes d'un item x à un lieu y,1,1
+report,Obtenir un rapport sur un item x à un lieu y,1,1
+item_details,Obtenir la description de l'item x,0,1
+loc_details,Obtenir la description de la location y,1,0

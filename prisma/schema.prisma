@@ -32,9 +32,11 @@ model Message {
 // Modèles pour la partie 2 du test technique
 
 model Option {
-  id          String @id @default(uuid())
-  name        String @unique
-  description String
+  id                String  @id @default(uuid())
+  name              String  @unique
+  description       String
+  requiresLocations Boolean
+  requiresItems     Boolean
 }
 
 model Location {

@@ -30,14 +30,23 @@ async function main() {
     const locationsData = readCsvFile(path.join(__dirname, '../data/locations.csv'));
     const itemsData = readCsvFile(path.join(__dirname, '../data/items.csv'));
 
-    // Insérer les options
-    console.log('Insertion des options...');
-    for (const option of optionsData) {
-      await prisma.$executeRaw`
-        INSERT INTO "Option" (id, name, description)
-        VALUES (${crypto.randomUUID()}, ${option.name}, ${option.description})
-      `;
+// Insérer les options
+console.log('Insertion des options...');
+for (const option of optionsData) {
+  // Convert string '1'/'0' to boolean true/false
+  const requiresLocations = option.requiresLocations === '1';
+  const requiresItems = option.requiresItems === '1';
+  
+  await prisma.option.create({
+    data: {
+      id: crypto.randomUUID(),
+      name: option.name,
+      description: option.description,
+      requiresLocations: requiresLocations,
+      requiresItems: requiresItems
     }
+  });
+}
 
     // Insérer les lieux
     console.log('Insertion des lieux...');
